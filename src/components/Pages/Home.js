@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import {Router, Route, Redirect, hashHistory} from 'react-router'
 
 class Home extends Component{
   componentWillMount(){

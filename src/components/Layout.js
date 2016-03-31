@@ -16,8 +16,8 @@ export default (props) =>{
       <Content 
         children={props.children} 
         title={title} 
-        className="container" >
-      </Content>
+        className="container" 
+      />
       <Footer title={title} />
     </div>
   )
