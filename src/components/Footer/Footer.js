@@ -1,14 +1,12 @@
 import React from 'react'
 
-// Footer Component
-
-export default props =>{
-  const footStyle = {
-    borderTop: '1px solid #ccc'
-  };
+const Footer = (props) =>{
   return(
-    <h5 style={footStyle}>
-      &copy; 2015 {props.title}
-    </h5>
+    <footer>
+      <h5 style={{borderTop: '1px solid #ccc'}}>
+        &copy; 2015 {props.title}
+      </h5>
+    </footer>
   )
-}
+};
+export default Footer

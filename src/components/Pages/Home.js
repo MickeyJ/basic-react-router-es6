@@ -1,27 +1,46 @@
 import React, { Component, PropTypes } from 'react'
+import API from '../../api/API'
 
-class Home extends Component{
-  componentWillMount(){
-    this.context.router.setRouteLeaveHook(
-      this.props.route,
-      this.routeWillLeave
-    )
+export default class Home extends Component{
+  constructor(){
+    super();
+    this.state = {
+      users: []
+    }
   }
-  routeWillLeave(nextLocation){
-    console.log(`leaving home for ${nextLocation.pathname}`);
+  setUserState(){
+    API.getUsers().then(users =>{
+      this.setState({
+        users: users.data
+      })
+    })
+  }
+  componentDidMount(){
+    this.setUserState();
   }
   render(){
-    return(
-      <div>
-        <h1>Home</h1>
-        <p>{this.props.params.message}</p>
-      </div>
+    const userList = this.state.users.map((x, i) =>(
+      <tr key={i}>
+        <td>{x.id}</td>
+        <td>{x.name}</td>
+        <td>{x.email}</td>
+        <td>{x.password}</td>
+      </tr>
+    ));
+    return (
+      <table className="table table-hover col-sm-2">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+          {userList}
+        </tbody>
+      </table>
     )
   }
 }
-
-Home.contextTypes = {
-  router: PropTypes.object.isRequired
-};
-
-export default Home

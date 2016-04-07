@@ -1,14 +1,10 @@
 import React from 'react'
 
-// Content Component
-
-export default props =>{
+const Content = props =>{
   return(
-    <div className="container" style={{height: '80vh'}}>
-
-      <h3>here is content container</h3>
+    <div className="jumbotron" style={{overflow: 'auto'}}>
       {props.children}
-
     </div>
   )
-}
+};
+export default Content
